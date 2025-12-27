@@ -1,3 +1,47 @@
 body {
     font-family: 'DejaVu Sans', sans-serif;
 }
+
+h1 {
+    font-style:bold;
+}
+
+#welcome-titles {
+    > h1 {
+         font-size: 3rem;
+    }
+
+    > p {
+        font-size: 1rem;
+    }
+
+    background-color: rgba(1,1, 1, 0.2);
+    padding: 15px;
+    top: 20%;
+}
+
+.fade-in-bk-titles {
+    animation: 
+        fade-in-titles-animation 1s /* duration */ 
+        steps(100) /* ensures a hard on/off toggle */ 
+        1; 
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+@keyframes fade-in-titles-animation {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}.fade-in-titles {
+    animation: 
+        fade-in-titles-animation 1s /* duration */ 
+        steps(100) /* ensures a hard on/off toggle */ 
+        1; 
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+@keyframes fade-in-titles-animation {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}

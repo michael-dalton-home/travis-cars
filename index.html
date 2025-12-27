@@ -31,9 +31,22 @@
     <main>
         <!-- Hero and carousel and titles -->
         <!-- TODO overlay titles over the bk image and build a carousel -->
-        <div class="row">
-            <img class="col-12 p-0" src="./img/model-s-front-sunset-1980x2880.jpg" 
-                alt="Car parked at sunset" style="height: 1400px; object-fit: cover;">
+        <div class="row position-relative">
+            <img class="col-12 p-0" src="./img/model-s-front-sunset-1980x2880.jpg" alt="Car parked at sunset" 
+                style="height: 1400px; object-fit: cover; mask-image: 
+                    linear-gradient(to bottom, black 90%, transparent 100%);
+                    -webkit-mask-image: linear-gradient(to bottom, gray 98%, transparent 100%);">
+            <div class="position-absolute start-50 translate-middle text-center text-white col-8 fade-in-bk-titles"
+                style="" id="welcome-titles">
+                <div class="fade-in-titles">
+                    <h1>Welcome to Travis Cars </h1>
+                    <p>Your Tesla Pre-Owned Specialist</p>
+                    <p>We are a Tesla pre-owned specialist based in Ilkley, West Yorkshire. 
+                        With expert knowledge of Tesla vehicles and a commitment to quality, 
+                        we offer a curated selection of pre-owned Teslas along with specialist 
+                        advice, support, and servicing tailored to Tesla owners and enthusiasts.</p>
+                </div>
+            </div>
         </div>
 
         <!-- car sillouette delineator -->
@@ -135,11 +148,15 @@
             <div class="col-4">
                 <div class="d-flex gap-2 align-items-center">
                         <img src="./img/telephone-icon-256.png" alt="phone icon" class="img-fluid col-1" style="filter: invert(80%);">
-                        <p class="m-0">0712 345678</p>
+                        <p class="m-0">07715 642379</p>
                     </div>
                     <div class="d-flex gap-2 align-items-center">
                         <img src="./img/email-icon-2-256.png" alt="email icon" class="img-fluid col-1" style="filter: invert(80%);">
-                        <p class="m-0">this.email.address@mail.com</p>
+                        <p class="m-0">sales@traviscars.co.uk</p>
+                    </div>
+                    <div class="d-flex gap-2 align-items-center">
+                        <img src="./img/maps-and-flags.png" alt="address icon" class="img-fluid col-1" style="filter: invert(80%);">
+                        <p class="m-0">Rivadale View, Ilkley, LS29 8ER, United Kingdom</p>
                     </div>
                 </div>
             </div>
