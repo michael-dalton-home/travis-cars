@@ -1,10 +1,10 @@
 
-body {
-  font-family: "Roboto", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
-  font-style: normal;
-  font-variation-settings: "wdth" 100;
+:root {
+    font-family: Inter, sans-serif;
+    font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
+}
+@supports (font-variation-settings: normal) {
+    :root { font-family: InterVariable, sans-serif; }
 }
 
 main {
@@ -20,20 +20,27 @@ main {
     background-size: 100%, 20px;
 }
 
-h1 {
-    font-weight: 500;
-}
 
 #welcome-titles {
-    /* > h1 {
-         font-size: 3rem;
-         font-weight: 700;
-    } */
+    > div {
+        > h1 {
+            font-size: 3rem;
+            font-weight: bold;
 
-    > p {
-        font-size: 1rem;
+            /* Make title a little wider */
+            display: inline-block; /* Required for transform to work on text */
+            transform: scaleX(1.1); /* Stretches the text to 150% width */
+            transform-origin: center; /* Keeps it aligned to the left */    
+            letter-spacing: 1px;
+        }
+
+        /* Titles sub title */
+        > p:first-of-type {
+            font-size: 1.2rem;
+        }
     }
 
+    /* Position the title block and background */
     background-color: rgba(1,1, 1, 0.2);
     padding: 15px;
     top: 20%;
@@ -55,7 +62,8 @@ h1 {
     animation-delay: 0.5s;
     opacity: 0;
 
-    > p:last-child {
+    /* Titles descriptive text */
+    > p:last-of-type {
         color: rgb(242, 242, 242);
     }
 }
@@ -66,4 +74,5 @@ h1 {
 
 .trusted-sml-text {
     color: rgb(50, 50, 50);
+    font-size: 1.1rem;
 }
