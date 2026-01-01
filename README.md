@@ -14,4 +14,4 @@ Video by Foster  : https://www.pexels.com/video/sleek-tesla-model-x-in-urban-env
 Photo by Tesla Fans Schweiz : https://unsplash.com/photos/blue-coupe-parked-beside-white-wall-2swaWy4Xhb0
 Marker icon https://www.flaticon.com/free-icons/marker
 
-https://rsms.me/inter/ font
+Mulish font https://fonts.google.com/specimen/Mulish?query=mulish
