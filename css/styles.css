@@ -1,13 +1,12 @@
-
 :root {
-    font-family: Inter, sans-serif;
-    font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
-}
-@supports (font-variation-settings: normal) {
-    :root { font-family: InterVariable, sans-serif; }
+    /* General font Mulish from Google */
+    font-family: "Mulish", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 main {
+    /* Subtle checkered background pattern */
     background-image: 
         linear-gradient(to right, 
         rgba(255, 255, 255, 1) 0%,   
@@ -15,7 +14,6 @@ main {
         rgba(255, 255, 255, 1) 100%  
         ),
         url('../img/20251110_201052.png');
-    /* height: 40px; */
     background-repeat: no-repeat, repeat;
     background-size: 100%, 20px;
 }
@@ -25,18 +23,19 @@ main {
     > div {
         > h1 {
             font-size: 3rem;
-            font-weight: bold;
+            font-weight: 500;
 
             /* Make title a little wider */
-            display: inline-block; /* Required for transform to work on text */
-            transform: scaleX(1.1); /* Stretches the text to 150% width */
-            transform-origin: center; /* Keeps it aligned to the left */    
+            display: inline-block;
+            transform: scaleX(1.1);
+            transform-origin: center;
             letter-spacing: 1px;
         }
 
         /* Titles sub title */
         > p:first-of-type {
             font-size: 1.2rem;
+            font-weight: 500;
         }
     }
 
@@ -64,7 +63,9 @@ main {
 
     /* Titles descriptive text */
     > p:last-of-type {
-        color: rgb(242, 242, 242);
+        color: rgb(232, 232, 232);
+        font-size: 1.1rem;
+        font-weight: 300;
     }
 }
 @keyframes fade-in-titles-animation {
@@ -75,4 +76,5 @@ main {
 .trusted-sml-text {
     color: rgb(50, 50, 50);
     font-size: 1.1rem;
+    font-weight: 400;
 }
