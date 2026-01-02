@@ -3,10 +3,10 @@
 const carDB = [
     {
         manufacturer: 'Tesla',
-        model: 'Model 3 (1)',
+        model: 'Model 3',
         bodyStyle: 'Saloon',
         colour: 'White',
-        firstRegistered: 2022,
+        firstRegistered: 'Jun 29, 2022',
         wheelDrive: 'AWD',
         range: 'long',
         gallery: [
@@ -22,53 +22,80 @@ const carDB = [
         ],
         status: 'sold',
         price: 0,
-        features: ''
+        mileage: 81000,
+        specifics: {
+            soh: '',
+            owners: 1,
+            batteryKw: 75,
+            ratedRange: 360,
+            MaxChargeRateKw: 250,
+            WarrantyTil: 'Jun 29, 2030',
+            features: [ 'Excellent Black interior', 'Excellent Bodywork' ],
+        }
     },
-        {
+    {
         manufacturer: 'Tesla',
-        model: 'Model 3 (2)',
+        model: 'Model 3',
         bodyStyle: 'Saloon',
-        colour: 'White',
-        firstRegistered: 2022,
+        colour: 'Grey',
+        firstRegistered: '2021',
         wheelDrive: 'AWD',
         range: 'long',
         gallery: [
-            './img/car-0.0-683x455.jpg',
-            './img/car-0.1-683x455.jpg',
-            './img/car-0.2-683x455.jpg',
-            './img/car-0.3-683x455.jpg'
+            './img/car-1.0-683x455.jpg',
+            './img/car-1.1-683x455.jpg',
+            './img/car-1.2-683x455.jpg',
+            './img/car-1.3-683x455.jpg'
         ],
         description: [
-            `Travis Cars is extremely proud to present for sale this stunning Tesla Model 3 Long Range AWD (MY22) Finished in the highly sought after Pearl White Metallic and equally gorgeous upgraded black "vegan leather" interior, this Model 3 is kitted out well with the all important heat pump & electric tailgate. Plus it's also been accessorised with an adjustable infotainment screen. Benefitting from the frankly ridiculous acceleration even from this model, this car will get you from 0-62mph in 4.6 seconds and rides on the visually enhancing aero 18"alloy wheels. The updated Long Range Model 3 has a WLTP-rated range of 360 miles from its 75kWh battery meaning even the longest of journeys can be tackled with no range anxiety. This is helped by access to the network of Tesla Superchargers which can provide charging speeds of up to 250kW. The Tesla really is at the cutting edge of the EV market, highlighted by the fact that asking the Google Maps-powered Sat-Nav to navigate to a charger will start to pre-condition the battery just before you arrive to ensure the highest possible charging speeds are achieved. What does this mean? Well, a 0-80% charge can be achieved in as little as 15-20mins. Keeping you entertained while the car is charging is also easy with the Tesla's suite of video content, games and music with access to YouTube, Netflix, Spotify etc The Tesla app gives you access to all aspects of the car, including pre-heating the car on frosty mornings, viewing live footage of the car's dash-cams from anywhere in the world with Sentry mode and setting timed charging schedules to benefit from off-peak electricity tariffs.`,
-            'Having covered 81,000 miles in the possession of its 1 owner from new, this Model 3 has been well cared for with the black leather seats in excellent condition as well as the bodywork. ',
-            'The car has a manufacturer warranty until 29/06/2030 or 120,000 miles'
+            `Travis Cars is extremely proud to present for sale this stunning Tesla Model 3 Long Range AWD (MY21) Finished in the highly sought after Pearl White Metallic and equally gorgeous upgraded black "vegan leather" interior, this Model 3 is kitted out well with the all important heat pump & electric tailgate. Plus it's also been accessorised with an adjustable infotainment screen. Benefitting from the frankly ridiculous acceleration even from this model, this car will get you from 0-62mph in 4.6 seconds and rides on the visually enhancing aero 18"alloy wheels. The updated Long Range Model 3 has a WLTP-rated range of 360 miles from its 75kWh battery meaning even the longest of journeys can be tackled with no range anxiety. This is helped by access to the network of Tesla Superchargers which can provide charging speeds of up to 250kW. The Tesla really is at the cutting edge of the EV market, highlighted by the fact that asking the Google Maps-powered Sat-Nav to navigate to a charger will start to pre-condition the battery just before you arrive to ensure the highest possible charging speeds are achieved. What does this mean? Well, a 0-80% charge can be achieved in as little as 15-20mins. Keeping you entertained while the car is charging is also easy with the Tesla's suite of video content, games and music with access to YouTube, Netflix, Spotify etc The Tesla app gives you access to all aspects of the car, including pre-heating the car on frosty mornings, viewing live footage of the car's dash-cams from anywhere in the world with Sentry mode and setting timed charging schedules to benefit from off-peak electricity tariffs. `,
+            'Having covered 116,000 miles in the possession of its 1 owner from new, this Model 3 has been well cared for with the black leather seats in excellent condition as well as the bodywork. ',
+            'The car has a manufacturer warranty until 15/12/2030 or 120,000'
         ],
-        status: 'sold',
-        price: 0,
-        features: ''
+        status: 'onsale',
+        price: 13695,
+        mileage: 116000,
+        specifics: {
+            soh: '',
+            owners: 1,
+            batteryKw: 75,
+            ratedRange: 360,
+            MaxChargeRateKw: 250,
+            WarrantyTil: 'Dec 15, 2029',
+            features: [ 'Excellent Black interior', 'Excellent Bodywork' ],
+        }
     },
     {
         manufacturer: 'Tesla',
         model: 'Model 3 (3)',
         bodyStyle: 'Saloon',
-        colour: 'White',
-        firstRegistered: 2022,
+        colour: 'Blue',
+        firstRegistered: 'Sep 08, 2021',
         wheelDrive: 'AWD',
         range: 'long',
         gallery: [
-            './img/car-0.0-683x455.jpg',
-            './img/car-0.1-683x455.jpg',
-            './img/car-0.2-683x455.jpg',
-            './img/car-0.3-683x455.jpg'
+            './img/car-2.0-683x455.jpg',
+            './img/car-2.1-683x455.jpg',
+            './img/car-2.2-683x455.jpg',
+            './img/car-2.3-683x455.jpg'
         ],
         description: [
-            `Travis Cars is extremely proud to present for sale this stunning Tesla Model 3 Long Range AWD (MY22) Finished in the highly sought after Pearl White Metallic and equally gorgeous upgraded black "vegan leather" interior, this Model 3 is kitted out well with the all important heat pump & electric tailgate. Plus it's also been accessorised with an adjustable infotainment screen. Benefitting from the frankly ridiculous acceleration even from this model, this car will get you from 0-62mph in 4.6 seconds and rides on the visually enhancing aero 18"alloy wheels. The updated Long Range Model 3 has a WLTP-rated range of 360 miles from its 75kWh battery meaning even the longest of journeys can be tackled with no range anxiety. This is helped by access to the network of Tesla Superchargers which can provide charging speeds of up to 250kW. The Tesla really is at the cutting edge of the EV market, highlighted by the fact that asking the Google Maps-powered Sat-Nav to navigate to a charger will start to pre-condition the battery just before you arrive to ensure the highest possible charging speeds are achieved. What does this mean? Well, a 0-80% charge can be achieved in as little as 15-20mins. Keeping you entertained while the car is charging is also easy with the Tesla's suite of video content, games and music with access to YouTube, Netflix, Spotify etc The Tesla app gives you access to all aspects of the car, including pre-heating the car on frosty mornings, viewing live footage of the car's dash-cams from anywhere in the world with Sentry mode and setting timed charging schedules to benefit from off-peak electricity tariffs.`,
-            'Having covered 81,000 miles in the possession of its 1 owner from new, this Model 3 has been well cared for with the black leather seats in excellent condition as well as the bodywork. ',
-            'The car has a manufacturer warranty until 29/06/2030 or 120,000 miles'
+            `Travis Cars is extremely proud to present for sale this stunning Tesla Model 3 Long Range AWD (MY21) Finished in the highly sought after Deep Blue Metallic  and equally gorgeous upgraded White "leather" interior, this Model 3 is kitted out well with the all important heat pump & electric tailgate. Plus it's also been accessorised with an adjustable infotainment screen. Benefitting from the frankly ridiculous acceleration even from this model, this car will get you from 0-62mph in 4.6 seconds and rides on the visually enhancing aero 18"alloy wheels. The updated Long Range Model 3 has a WLTP-rated range of 360 miles from its 75kWh battery meaning even the longest of journeys can be tackled with no range anxiety. This is helped by access to the network of Tesla Superchargers which can provide charging speeds of up to 250kW. The Tesla really is at the cutting edge of the EV market, highlighted by the fact that asking the Google Maps-powered Sat-Nav to navigate to a charger will start to pre-condition the battery just before you arrive to ensure the highest possible charging speeds are achieved. What does this mean? Well, a 0-80% charge can be achieved in as little as 15-20mins. Keeping you entertained while the car is charging is also easy with the Tesla's suite of video content, games and music with access to YouTube, Netflix, Spotify etc The Tesla app gives you access to all aspects of the car, including pre-heating the car on frosty mornings, viewing live footage of the car's dash-cams from anywhere in the world with Sentry mode and setting timed charging schedules to benefit from off-peak electricity tariffs. Having only covered 72,000 miles in the possession of its 1 owner from new, this Model 3 has been well cared for with the black leather seats in excellent condition as well as the bodywork.`,
+            'For more information or to book a viewing please call us or you can drop me an email via the links attached. ',
+            'The car has a manufacturer warranty until 08/09/2029 or 120,000 miles whichever comes first. '
         ],
         status: 'sold',
-        price: 0,
-        features: ''
+        price: 17980,
+        mileage: 72000,
+        specifics: {
+            soh: '94%',
+            owners: 1,
+            batteryKw: 75,
+            ratedRange: 360,
+            MaxChargeRateKw: 250,
+            WarrantyTil: 'Sep 08, 2029',
+            features: [ 'heatpump', 'electric tailgate', 'Black interior' ],
+        }
     }
 
 ];
@@ -80,18 +107,41 @@ function buildCard(carRecord) {
     const cardTitle = document.createElement('h5');
     const cardText = document.createElement('p');
     const cardBody = document.createElement('div');
+    const cardCarou = document.createElement('div');
+    const cardCInner = document.createElement('div');
 
     /* Add appropriate classes to our elements */
-    card.classList.add('card');
-    card.classList.add('col-md-5');
+    card.classList.value = 'card col-md-5 shadow';
     cardBody.classList.add('card-body');
     cardTitle.classList.add('card-title');
     cardText.classList.add('card-text');
+    cardCInner.classList.add('carousel-inner');
+    cardCarou.classList.value = 'carousel slide pt-2';
 
+    /* Setup carousel */    
+    carRecord.gallery.forEach((el, ind) => {
+        const cDiv = document.createElement('div');
+        const cImg = document.createElement('img');
+
+        cDiv.classList.add('carousel-item');
+        cImg.classList.add('d-block');
+        cImg.classList.add('w-100');
+
+        if (ind === 0)
+            cDiv.classList.add('active');
+
+        cImg.src = el;
+        console.log(el);
+
+        cDiv.appendChild(cImg);
+        cardCInner.appendChild(cDiv);
+    })
     /* Add hierarchy to form our card */
+    card.appendChild(cardCarou);
     card.appendChild(cardBody);
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardText);
+    cardCarou.appendChild(cardCInner);
 
     /* Add in data from our param object */
     cardTitle.textContent = `${carRecord.manufacturer} ${carRecord.model}`;
@@ -109,6 +159,31 @@ function buildCard(carRecord) {
 
         if (index < carRecord.description.length-1) { cardText.textContent += '\n'; };
     });
+
+    /* Add controls to our carousel */
+    cardCarou.id = `a${Math.random().toString(36).substring(2)}`;
+    cardCarou.dataset.bsInterval="false";       // Don't automatically slide the carousel
+    const ctlPrev = document.createElement('button');
+    const prevSpan = document.createElement('span');
+    ctlPrev.classList.add('carousel-control-prev');
+    ctlPrev.type = 'button';
+    ctlPrev.dataset.bsTarget = `#${cardCarou.id}`;
+    ctlPrev.dataset.bsSlide = 'prev';
+    prevSpan.classList.add('carousel-control-prev-icon');
+    ctlPrev.appendChild(prevSpan);
+    
+    const ctlNext = document.createElement('button');
+    const nextSpan = document.createElement('span');
+    ctlNext.classList.add('carousel-control-next');
+    ctlNext.type = 'button';
+    ctlNext.dataset.bsTarget = `#${cardCarou.id}`;
+    ctlNext.dataset.bsSlide = 'next';
+    nextSpan.classList.add('carousel-control-next-icon');
+    ctlNext.appendChild(nextSpan);
+
+    cardCarou.appendChild(ctlNext);
+    cardCarou.appendChild(ctlPrev);
+
 
     return card;
 }
