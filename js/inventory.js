@@ -8,7 +8,7 @@ const carDB = [
         colour: 'White',
         firstRegistered: 'Jun 29, 2022',
         wheelDrive: 'AWD',
-        range: 'long',
+        range: 'Long',
         gallery: [
             './img/car-0.0-683x455.jpg',
             './img/car-0.1-683x455.jpg',
@@ -40,7 +40,7 @@ const carDB = [
         colour: 'Grey',
         firstRegistered: '2021',
         wheelDrive: 'AWD',
-        range: 'long',
+        range: 'Long',
         gallery: [
             './img/car-1.0-683x455.jpg',
             './img/car-1.1-683x455.jpg',
@@ -67,12 +67,12 @@ const carDB = [
     },
     {
         manufacturer: 'Tesla',
-        model: 'Model 3 (3)',
+        model: 'Model 3',
         bodyStyle: 'Saloon',
         colour: 'Blue',
         firstRegistered: 'Sep 08, 2021',
         wheelDrive: 'AWD',
-        range: 'long',
+        range: 'Long',
         gallery: [
             './img/car-2.0-683x455.jpg',
             './img/car-2.1-683x455.jpg',
@@ -101,6 +101,15 @@ const carDB = [
 ];
 
 
+function buildPill(pillTxt, clss) {
+    const newPill = document.createElement('span');
+
+    newPill.textContent = pillTxt;
+    newPill.classList.value = `badge bg-secondary`;
+
+    return newPill;
+}
+
 function buildCard(carRecord) {
     /* Create elements for Bootstrap card */
     const card = document.createElement('div');
@@ -109,14 +118,16 @@ function buildCard(carRecord) {
     const cardBody = document.createElement('div');
     const cardCarou = document.createElement('div');
     const cardCInner = document.createElement('div');
+    const titleBox = document.createElement('div');
 
     /* Add appropriate classes to our elements */
     card.classList.value = 'card col-md-5 shadow';
     cardBody.classList.add('card-body');
-    cardTitle.classList.add('card-title');
+    cardTitle.classList.value = 'card-title m-0 py-1';
     cardText.classList.add('card-text');
     cardCInner.classList.add('carousel-inner');
     cardCarou.classList.value = 'carousel slide pt-2';
+    titleBox.classList.value = 'd-flex gap-2 py-1 w-100';
 
     /* Setup carousel */    
     carRecord.gallery.forEach((el, ind) => {
@@ -131,7 +142,6 @@ function buildCard(carRecord) {
             cDiv.classList.add('active');
 
         cImg.src = el;
-        console.log(el);
 
         cDiv.appendChild(cImg);
         cardCInner.appendChild(cDiv);
@@ -139,12 +149,26 @@ function buildCard(carRecord) {
     /* Add hierarchy to form our card */
     card.appendChild(cardCarou);
     card.appendChild(cardBody);
-    cardBody.appendChild(cardTitle);
+    titleBox.appendChild(cardTitle);
+    cardBody.appendChild(titleBox);
     cardBody.appendChild(cardText);
     cardCarou.appendChild(cardCInner);
 
     /* Add in data from our param object */
     cardTitle.textContent = `${carRecord.manufacturer} ${carRecord.model}`;
+
+    if (carRecord.status === 'sold') {
+        const sold = buildPill(`SOLD`, 'bg-primary');
+        sold.classList.add('fs-5');
+        titleBox.appendChild(sold);
+    } else {
+        const cardPrice = document.createElement('h4');
+        titleBox.classList.value += ' justify-content-between';
+        cardPrice.classList.add('card-title');
+        cardPrice.textContent = `£ ${carRecord.price}`;
+        titleBox.appendChild(cardPrice);
+
+    }
 
     /* Encourage description to only display a few lines by default, with an ellipsis */
     cardText.style.whiteSpace = 'pre-wrap';     // Allow each new description to start on a new line
@@ -184,7 +208,22 @@ function buildCard(carRecord) {
     cardCarou.appendChild(ctlNext);
     cardCarou.appendChild(ctlPrev);
 
+    /* Add sub title info */
+    const subTitle = document.createElement('p');
+    subTitle.textContent = `${carRecord.wheelDrive} powered, ${carRecord.range} range ${carRecord.bodyStyle}`;
+    subTitle.classList.value = 'fs-6 fw-normal pt-1 mb-1 ps-1';
+    titleBox.after(subTitle);
 
+    /* Add basic info using pill badges */
+    const pillBox = document.createElement('div');
+    const carReg = new Date(carRecord.firstRegistered);
+    pillBox.classList.value = 'd-flex gap-1 ps-1';
+    pillBox.appendChild( buildPill(`${carRecord.mileage} miles`, 'bg-secondary') );
+    pillBox.appendChild( buildPill(`${carRecord.specifics.owners} owner`, 'bg-secondary') );
+    pillBox.appendChild( buildPill(`${carReg.getFullYear()}`, 'bg-secondary') );
+    titleBox.after(pillBox);
+
+    
     return card;
 }
 
