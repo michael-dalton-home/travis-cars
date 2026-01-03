@@ -5,6 +5,28 @@
     font-style: normal;
 }
 
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.card:hover {
+  transform: scale(1.10);
+  background-color: whitesmoke;
+  box-shadow: 0 4px 6px rgba(253, 181, 181, 0.1);
+  z-index: 10;
+}
+
+.car-is-sold {
+    display: block;
+}
+
+#card-container.hide-sold .car-is-sold {
+    display: none;
+}
+
 main {
     /* Subtle checkered background pattern */
     background-image: 
@@ -18,6 +40,9 @@ main {
     background-size: 100%, 20px;
 }
 
+.to-grey-scale {
+    filter: grayscale(100%);
+}
 
 #welcome-titles {
     > div {

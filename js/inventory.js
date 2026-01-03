@@ -48,7 +48,7 @@ const carDB = [
             './img/car-1.3-683x455.jpg'
         ],
         description: [
-            `Travis Cars is extremely proud to present for sale this stunning Tesla Model 3 Long Range AWD (MY21) Finished in the highly sought after Pearl White Metallic and equally gorgeous upgraded black "vegan leather" interior, this Model 3 is kitted out well with the all important heat pump & electric tailgate. Plus it's also been accessorised with an adjustable infotainment screen. Benefitting from the frankly ridiculous acceleration even from this model, this car will get you from 0-62mph in 4.6 seconds and rides on the visually enhancing aero 18"alloy wheels. The updated Long Range Model 3 has a WLTP-rated range of 360 miles from its 75kWh battery meaning even the longest of journeys can be tackled with no range anxiety. This is helped by access to the network of Tesla Superchargers which can provide charging speeds of up to 250kW. The Tesla really is at the cutting edge of the EV market, highlighted by the fact that asking the Google Maps-powered Sat-Nav to navigate to a charger will start to pre-condition the battery just before you arrive to ensure the highest possible charging speeds are achieved. What does this mean? Well, a 0-80% charge can be achieved in as little as 15-20mins. Keeping you entertained while the car is charging is also easy with the Tesla's suite of video content, games and music with access to YouTube, Netflix, Spotify etc The Tesla app gives you access to all aspects of the car, including pre-heating the car on frosty mornings, viewing live footage of the car's dash-cams from anywhere in the world with Sentry mode and setting timed charging schedules to benefit from off-peak electricity tariffs. `,
+            `Travis Cars is extremely proud to present for sale this stunning Tesla Model 3 Long Range AWD (MY21) Finished in Midnight Silver Metallic (Grey) and equally gorgeous upgraded black "vegan leather" interior, this Model 3 is kitted out well with the all important heat pump & electric tailgate. Plus it's also been accessorised with an adjustable infotainment screen. Benefitting from the frankly ridiculous acceleration even from this model, this car will get you from 0-62mph in 4.6 seconds and rides on the visually enhancing aero 18"alloy wheels. The updated Long Range Model 3 has a WLTP-rated range of 360 miles from its 75kWh battery meaning even the longest of journeys can be tackled with no range anxiety. This is helped by access to the network of Tesla Superchargers which can provide charging speeds of up to 250kW. The Tesla really is at the cutting edge of the EV market, highlighted by the fact that asking the Google Maps-powered Sat-Nav to navigate to a charger will start to pre-condition the battery just before you arrive to ensure the highest possible charging speeds are achieved. What does this mean? Well, a 0-80% charge can be achieved in as little as 15-20mins. Keeping you entertained while the car is charging is also easy with the Tesla's suite of video content, games and music with access to YouTube, Netflix, Spotify etc The Tesla app gives you access to all aspects of the car, including pre-heating the car on frosty mornings, viewing live footage of the car's dash-cams from anywhere in the world with Sentry mode and setting timed charging schedules to benefit from off-peak electricity tariffs. `,
             'Having covered 116,000 miles in the possession of its 1 owner from new, this Model 3 has been well cared for with the black leather seats in excellent condition as well as the bodywork. ',
             'The car has a manufacturer warranty until 15/12/2030 or 120,000'
         ],
@@ -97,15 +97,15 @@ const carDB = [
             features: [ 'heatpump', 'electric tailgate', 'Black interior' ],
         }
     }
-
 ];
 
 
 function buildPill(pillTxt, clss) {
     const newPill = document.createElement('span');
+    const classes = 'badge '+clss;
 
     newPill.textContent = pillTxt;
-    newPill.classList.value = `badge bg-secondary`;
+    newPill.classList.value = classes;
 
     return newPill;
 }
@@ -122,6 +122,7 @@ function buildCard(carRecord) {
 
     /* Add appropriate classes to our elements */
     card.classList.value = 'card col-md-5 shadow';
+    if (carRecord.status === 'sold') card.classList.add('car-is-sold');
     cardBody.classList.add('card-body');
     cardTitle.classList.value = 'card-title m-0 py-1';
     cardText.classList.add('card-text');
@@ -138,14 +139,19 @@ function buildCard(carRecord) {
         cImg.classList.add('d-block');
         cImg.classList.add('w-100');
 
-        if (ind === 0)
+        if (ind === 0) {
             cDiv.classList.add('active');
+
+            if (carRecord.status === 'sold')
+                cImg.classList.add('to-grey-scale');
+        }
 
         cImg.src = el;
 
         cDiv.appendChild(cImg);
         cardCInner.appendChild(cDiv);
-    })
+    });
+
     /* Add hierarchy to form our card */
     card.appendChild(cardCarou);
     card.appendChild(cardBody);
@@ -185,28 +191,30 @@ function buildCard(carRecord) {
     });
 
     /* Add controls to our carousel */
-    cardCarou.id = `a${Math.random().toString(36).substring(2)}`;
-    cardCarou.dataset.bsInterval="false";       // Don't automatically slide the carousel
-    const ctlPrev = document.createElement('button');
-    const prevSpan = document.createElement('span');
-    ctlPrev.classList.add('carousel-control-prev');
-    ctlPrev.type = 'button';
-    ctlPrev.dataset.bsTarget = `#${cardCarou.id}`;
-    ctlPrev.dataset.bsSlide = 'prev';
-    prevSpan.classList.add('carousel-control-prev-icon');
-    ctlPrev.appendChild(prevSpan);
-    
-    const ctlNext = document.createElement('button');
-    const nextSpan = document.createElement('span');
-    ctlNext.classList.add('carousel-control-next');
-    ctlNext.type = 'button';
-    ctlNext.dataset.bsTarget = `#${cardCarou.id}`;
-    ctlNext.dataset.bsSlide = 'next';
-    nextSpan.classList.add('carousel-control-next-icon');
-    ctlNext.appendChild(nextSpan);
+    if (carRecord.status !== 'sold') {
+        cardCarou.id = `a${Math.random().toString(36).substring(2)}`;
+        cardCarou.dataset.bsInterval="false";       // Don't automatically slide the carousel
+        const ctlPrev = document.createElement('button');
+        const prevSpan = document.createElement('span');
+        ctlPrev.classList.add('carousel-control-prev');
+        ctlPrev.type = 'button';
+        ctlPrev.dataset.bsTarget = `#${cardCarou.id}`;
+        ctlPrev.dataset.bsSlide = 'prev';
+        prevSpan.classList.add('carousel-control-prev-icon');
+        ctlPrev.appendChild(prevSpan);
+        
+        const ctlNext = document.createElement('button');
+        const nextSpan = document.createElement('span');
+        ctlNext.classList.add('carousel-control-next');
+        ctlNext.type = 'button';
+        ctlNext.dataset.bsTarget = `#${cardCarou.id}`;
+        ctlNext.dataset.bsSlide = 'next';
+        nextSpan.classList.add('carousel-control-next-icon');
+        ctlNext.appendChild(nextSpan);
 
-    cardCarou.appendChild(ctlNext);
-    cardCarou.appendChild(ctlPrev);
+        cardCarou.appendChild(ctlNext);
+        cardCarou.appendChild(ctlPrev);
+    }
 
     /* Add sub title info */
     const subTitle = document.createElement('p');
@@ -227,6 +235,17 @@ function buildCard(carRecord) {
     return card;
 }
 
+function handleSwitchChange(event) {
+
+    const container = document.querySelector('#card-container');
+
+    container.classList.toggle('hide-sold', event.target.checked);
+    // toggle.addEventListener('change', (event) => {
+        const isEnabled = event.target.checked;
+    // document.body.classList.toggle('grayscale-mode', toggle.checked);
+        console.log("Sold switch changed to " + isEnabled);
+    // });
+}
 
 //
 // GLOBAL MAIN CODE
@@ -238,4 +257,7 @@ function buildCard(carRecord) {
         const newCard = buildCard(element);
         cardContainer.appendChild(newCard);
     });
+
+    const mySwitch = document.querySelector('#hideSoldSwitch');
+    mySwitch.addEventListener('change', handleSwitchChange);
 }

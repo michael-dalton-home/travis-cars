@@ -32,9 +32,16 @@
         </div>
     </header>
 
-    <main class="container-fluid p-4">
+    <main class="container-fluid col-md-10 col-12">
         <h1 class="text-center mb-4">Our Inventory</h1>
+        <div class="d-flex border-100 border rounded mb-4 p-2 w-100 justify-content-center align-items-center ">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="hideSoldSwitch">
+                <label class="form-check-label" for="hideSoldSwitch">Hide Sold Vehicles</label>
+            </div>
+        </div>
 
+        <!-- JS will add cards to this container -->
         <div class="row justify-content-center gap-2" id="card-container">
 
     </main>
