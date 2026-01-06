@@ -44,6 +44,13 @@ main {
     filter: grayscale(100%);
 }
 
+#carModalCol2 {
+    white-space: pre-wrap;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    /* overflow: hidden; */
+}
+
 #welcome-titles {
     > div {
         > h1 {

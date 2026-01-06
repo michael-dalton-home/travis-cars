@@ -1,4 +1,3 @@
-
 // List of cars in our inventory.  A real site would pull this from an endpoint of course but ..
 const carDB = [
     {
@@ -24,7 +23,7 @@ const carDB = [
         price: 0,
         mileage: 81000,
         specifics: {
-            soh: '',
+            // soh: '',
             owners: 1,
             batteryKw: 75,
             ratedRange: 360,
@@ -100,6 +99,12 @@ const carDB = [
 ];
 
 
+/*
+ * Builds a new bootstrap Pill html tree
+ *
+ * In: pillTxt - text content for the new pill
+ * In: clss - Description of classes for the new pill.  Typically includes bg color
+ */
 function buildPill(pillTxt, clss) {
     const newPill = document.createElement('span');
     const classes = 'badge '+clss;
@@ -110,6 +115,13 @@ function buildPill(pillTxt, clss) {
     return newPill;
 }
 
+
+/* 
+ * Builds a bootstrap html Card for a car.
+ *
+ * In: carRecord - object describing our car
+ * Out: New HTML tree ready for insertion into our web page
+ */
 function buildCard(carRecord) {
     /* Create elements for Bootstrap card */
     const card = document.createElement('div');
@@ -176,6 +188,9 @@ function buildCard(carRecord) {
 
     }
 
+    /* Store the car record in the card HTML object so we can reference it later */
+    card.dataset.description = JSON.stringify(carRecord);
+
     /* Encourage description to only display a few lines by default, with an ellipsis */
     cardText.style.whiteSpace = 'pre-wrap';     // Allow each new description to start on a new line
     cardText.style.display = '-webkit-box';
@@ -235,6 +250,12 @@ function buildCard(carRecord) {
     return card;
 }
 
+/*
+ * Handle event: Change of 'hide sold cards'
+ *
+ * Toggles hiding of sold cards, or reestablishes display of all cards.
+ * Each sold card is already tagged as car-is-sold so we can toggle css classes to get the desired effect
+ */
 function handleSwitchChange(event) {
 
     const container = document.querySelector('#card-container');
@@ -247,6 +268,101 @@ function handleSwitchChange(event) {
     // });
 }
 
+
+/*
+ * Populate and show our car modal
+ *
+ * In: carRecord - description of the car to show
+ */
+function showCarModal(carRecord) {
+    const md = document.getElementById('carModal');
+    const bsModal = new bootstrap.Modal(md);
+
+    const mdTitle = document.getElementById('carModalTitle');
+    const mdCol1 = document.getElementById('carModalCol1');
+    const mdCol2 = document.getElementById('carModalCol2');
+    const mdImage = document.getElementById('carModalImage');
+    const mdSubs = document.getElementById('carModalSubTitle');
+
+    mdImage.src = carRecord.gallery[0];
+    mdTitle.textContent =  `${carRecord.manufacturer} ${carRecord.model}`;
+
+    /* Add all the descriptions to the card */
+    mdCol2.textContent = '';
+    carRecord.description.forEach((element,index) => {
+        mdCol2.textContent += element;
+        if (index < carRecord.description.length-1) { mdCol2.textContent += '\n'; };
+    });
+
+    /* Add sub title info */
+    mdSubs.textContent = `${carRecord.wheelDrive} powered, ${carRecord.range} range ${carRecord.bodyStyle}`;
+
+    /* Populate pill boxes */
+    const carReg = new Date(carRecord.firstRegistered);
+    const mdPillMiles = document.getElementById('carModalPillMiles');
+    const mdPillYear = document.getElementById('carModalPillYear');
+    const mdPillOwner = document.getElementById('carModalPillOwners');
+
+    mdPillMiles.textContent = `${carRecord.mileage} miles`;
+    mdPillOwner.textContent = `${carRecord.specifics.owners} owner`;
+    mdPillYear.textContent = `${carReg.getFullYear()}`;
+
+    /* SPECIFICS list 
+     */
+    const mdSpecifics = document.getElementById('carModalSpecificsList');
+    mdSpecifics.innerHTML = '';
+
+    // Battery State of Health
+    let newLi = undefined;
+    if (carRecord.specifics.soh !== '' && 
+        carRecord.specifics.soh!==undefined) {
+        newLi = document.createElement('li');
+        newLi.textContent = `Battery Health ${carRecord.specifics.soh}`;
+        mdSpecifics.appendChild(newLi);
+    }
+
+    // Battery Range
+    newLi = document.createElement('li');
+    newLi.textContent = `Range ${carRecord.specifics.ratedRange} miles`;
+    mdSpecifics.appendChild(newLi);
+
+    // Battery Size
+    newLi = document.createElement('li');
+    newLi.textContent = `Battery ${carRecord.specifics.batteryKw} kwh`;
+    mdSpecifics.appendChild(newLi);
+
+    // Warranty
+    newLi = document.createElement('li');
+    newLi.textContent = `Warranty ends ${carRecord.specifics.WarrantyTil}`;
+    mdSpecifics.appendChild(newLi);
+
+    /* FEATURES list
+     */
+    const mdFeatures = document.getElementById('carModalFeaturesList');
+    mdFeatures.innerHTML = '';
+    carRecord.specifics.features.forEach(ft => {
+        newLi = document.createElement('li');
+        newLi.textContent = ft;
+        mdFeatures.appendChild(newLi);
+    });
+
+    /* PRICING
+     */
+    const mdSold = document.getElementById('carModalPillSold');
+    const mdPrice = document.getElementById('carModalPrice');
+
+    if (carRecord.status !== 'sold') {
+        mdSold.hidden = true;
+        mdPrice.textContent = `£${carRecord.price}`;
+    } else {
+        mdSold.hidden = false;
+        mdPrice.textContent = '';
+    }
+
+    bsModal.show();
+}
+
+
 //
 // GLOBAL MAIN CODE
 //
@@ -256,6 +372,13 @@ function handleSwitchChange(event) {
     carDB.forEach(element => {
         const newCard = buildCard(element);
         cardContainer.appendChild(newCard);
+
+        newCard.addEventListener("click", (el) => { 
+            const card = el.target.closest('.card');
+            showCarModal(JSON.parse(
+                card.dataset.description)
+                ); 
+        });
     });
 
     const mySwitch = document.querySelector('#hideSoldSwitch');
