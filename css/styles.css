@@ -12,7 +12,7 @@
   z-index: 1;
 }
 
-.card:hover {
+.card:not(.no-hover):hover {
   transform: scale(1.10);
   background-color: whitesmoke;
   box-shadow: 0 4px 6px rgba(253, 181, 181, 0.1);
@@ -110,3 +110,16 @@ main {
     font-size: 1.1rem;
     font-weight: 400;
 }
+
+.about-std-text {
+    color: rgb(50, 50, 50);
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.about-crop-vertical {
+    width: 100%;       /* Or your desired width */
+    height: 250px;     /* Set this to exactly half the image's height */
+    object-fit: cover; /* Maintains aspect ratio while filling the box */
+    object-position: center; /* Ensures the middle is what's visible */
+  }

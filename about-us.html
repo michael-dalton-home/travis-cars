@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./css/styles.css">
-    <script src="./js/inventory.js" defer></script>
+    <!-- <script src="./js/inventory.js" defer></script> -->
 </head>
 <body>
     <!-- Titlebar: branding, quick links -->
@@ -24,8 +24,8 @@
             <div class="navbar col m-0 p-0">
                 <ul class="nav">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link disabled" href="#">Inventory</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="inventory.html">Inventory</a></li>
+                    <li class="nav-item"><a class="nav-link disabled" href="#">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                 </ul>
             </div>
@@ -33,17 +33,30 @@
     </header>
 
     <main class="container-fluid col-md-10 col-12">
-        <h1 class="text-center mb-4">Our Inventory</h1>
-        <div class="d-flex border-100 border rounded mb-4 p-2 w-100 justify-content-center align-items-center ">
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="hideSoldSwitch">
-                <label class="form-check-label" for="hideSoldSwitch">Hide Sold Vehicles</label>
+        <h1 class="text-center py-4">About Us</h1>
+
+        <div class="row about-std-text justify-content-center gap-4 pb-4" id="card-container">
+
+            <div class="card no-hover w-100 border-1 py-2" style="width: 18rem;">
+                    <h2 class="card-title text-center py-2">Travis Cars</h2>
+                <div class="card-body d-flex flex-column gap-5 justify-content-center align-items-center w-75 mx-auto about-std-text">
+                    <img src="./img/travis-logo-188x188.png" class="img-fluid about-crop-vertical" alt="Travis Cars logo">
+                    <p class="text-center">Travis Cars is dedicated to providing a comprehensive selection of pre-owned Tesla vehicles to our clients. <br>
+                        Our experienced team ensures that every car meets the highest standards. <br>
+                        Join the growing community of electric vehicle enthusiasts.</p>
+                </div>
+            </div>
+
+            <div class="card no-hover w-100 border-1 py-2" style="width: 18rem;">
+                    <h2 class="card-title text-center">Find Your Perfect Tesla</h2>
+                <div class="card-body d-flex flex-column gap-5 justify-content-center align-items-center w-75 mx-auto about-std-text">
+                    <img src="./img/cybertruck-683x617.jpg" class="img-fluid about-crop-vertical" alt="Cybertruck">
+                    <p class="text-center">Browse our extensive inventory of used Tesla vehicles and experience excellence in electric driving.
+                        Whether it’s your first EV or you’re a seasoned driver, we’ve got you covered.</p>
+                </div>
             </div>
         </div>
 
-        <!-- JS will add cards to this container -->
-        <div class="row justify-content-center gap-2 pb-4" id="card-container">
-            </div>
     </main>
 
 
